@@ -55,11 +55,21 @@ function isBlob(input: any): input is Blob {
   return input != null && input.stream instanceof Function;
 }
 
+type MetadataRecord = Record<string, string | string[] | Buffer>
+
+export function metadataFromRecord(metaData: MetadataRecord) {
+  const meta = new Metadata();
+  for (const [key, value] of Object.entries(metaData)) {
+    meta.add(key, value as MetadataValue);
+  }
+  return meta
+}
+
 export function addMetaDataToCall(
   callFn: any,
   input: any,
   resolverData: ResolverData,
-  metaData: Record<string, string | string[] | Buffer>,
+  metaData: MetadataRecord,
   isResponseStream = false,
 ) {
   const callFnArguments: any[] = [];

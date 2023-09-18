@@ -552,16 +552,6 @@
     mkdirp "1.0.3"
     yargs "15.3.1"
 
-"@ardatan/grpc-reflection-js@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@ardatan/grpc-reflection-js/-/grpc-reflection-js-0.0.2.tgz#e10f76e9b59c6ce1a8cd37bbfa3d47d596dea3b8"
-  integrity sha512-O9UD3OLbtJ7DDZxiJs0ngmcJ9lWibx1RNL4WjiJPZC5s4RBkybwMgTgq8bBS7GF8iIkn+vkAGUt746GSW4d52A==
-  dependencies:
-    "@types/google-protobuf" "^3.7.2"
-    "@types/lodash.set" "^4.3.6"
-    google-protobuf "^3.12.2"
-    lodash.set "^4.3.2"
-
 "@ardatan/raml-1-parser@1.1.69":
   version "1.1.69"
   resolved "https://registry.yarnpkg.com/@ardatan/raml-1-parser/-/raml-1-parser-1.1.69.tgz#c6fa1c8430f5f93abe47385e33c29312f793ecbf"
@@ -12574,6 +12564,17 @@ grpc-node-server-reflection@1.0.2:
     "@grpc/proto-loader" "^0.6.0-pre17"
     google-protobuf "^3.15.1"
 
+grpc-reflection-js@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/grpc-reflection-js/-/grpc-reflection-js-0.3.0.tgz#bfa9776d38f88ff7199d126fcfe0046411045aa8"
+  integrity sha512-3lhTlQluPxVgbowCXA3tAZC3RJW+GSOUkguLNYl1QffYRiutUB3RDfPkQFTcrCFJgNiIIxx+iJkr8s3uSp3zWA==
+  dependencies:
+    "@types/google-protobuf" "^3.7.2"
+    "@types/lodash.set" "^4.3.6"
+    google-protobuf "^3.12.2"
+    lodash.set "^4.3.2"
+    protobufjs "^7.2.2"
+
 gzip-size@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-6.0.0.tgz#065367fd50c239c0671cbcbad5be3e2eeb10e462"
@@ -19129,7 +19130,7 @@ protobufjs@^6.11.3:
     "@types/node" ">=13.7.0"
     long "^4.0.0"
 
-protobufjs@^7.2.4, protobufjs@^7.2.5:
+protobufjs@^7.2.2, protobufjs@^7.2.4, protobufjs@^7.2.5:
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-7.2.5.tgz#45d5c57387a6d29a17aab6846dcc283f9b8e7f2d"
   integrity sha512-gGXRSXvxQ7UiPgfw8gevrfRWcTlSbOFg+p/N+JVJEK5VhueL2miT6qTymqAmjr1Q5WbOCyJbyrk6JfWKwlFn6A==
@@ -22151,7 +22152,6 @@ typical@^5.2.0:
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version "20.31.0"
-  uid "809b99d2d7d12e2cbf89b7135041e9b41ff84084"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/809b99d2d7d12e2cbf89b7135041e9b41ff84084"
 
 ua-parser-js@^1.0.35:

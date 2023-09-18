@@ -25,7 +25,7 @@ import lodashHas from 'lodash.has';
 import protobufjs, { AnyNestedObject, IParseOptions, Message, RootConstructor } from 'protobufjs';
 import { IFileDescriptorSet } from 'protobufjs/ext/descriptor';
 import descriptor from 'protobufjs/ext/descriptor/index.js';
-import { Client } from '@ardatan/grpc-reflection-js';
+import { Client } from 'grpc-reflection-js';
 import { fs, path, process } from '@graphql-mesh/cross-helpers';
 import { PredefinedProxyOptions, StoreProxy } from '@graphql-mesh/store';
 import { stringInterpolator } from '@graphql-mesh/string-interpolation';
@@ -59,7 +59,7 @@ import {
 import './patchLongJs.js';
 import { resolvers as scalarResolvers } from 'graphql-scalars';
 import { addExecutionLogicToScalar } from './scalars.js';
-import { addIncludePathResolver, addMetaDataToCall, getTypeName } from './utils.js';
+import {addIncludePathResolver, addMetaDataToCall, getTypeName, metadataFromRecord} from './utils.js';
 
 const { Root } = protobufjs;
 
@@ -103,7 +103,7 @@ export default class GrpcHandler implements MeshHandler {
     this.logger.debug(`Using the reflection`);
     const reflectionEndpoint = stringInterpolator.parse(this.config.endpoint, { env: process.env });
     this.logger.debug(`Creating gRPC Reflection Client`);
-    const reflectionClient = new Client(reflectionEndpoint, creds);
+    const reflectionClient = new Client(reflectionEndpoint, creds, undefined, metadataFromRecord(this.config.metaData));
     const subId = this.pubsub.subscribe('destroy', () => {
       reflectionClient.grpcClient.close();
       this.pubsub.unsubscribe(subId);
