@@ -9,6 +9,7 @@ import {
   specifiedDirectives,
 } from 'graphql';
 import {
+  Directive,
   EnumTypeComposerValueConfigDefinition,
   ObjectTypeComposerFieldConfigAsObjectDefinition,
   SchemaComposer,
@@ -103,7 +104,8 @@ export default class GrpcHandler implements MeshHandler {
     this.logger.debug(`Using the reflection`);
     const reflectionEndpoint = stringInterpolator.parse(this.config.endpoint, { env: process.env });
     this.logger.debug(`Creating gRPC Reflection Client`);
-    const reflectionClient = new Client(reflectionEndpoint, creds, undefined, metadataFromRecord(this.config.metaData));
+    const reflectionClient = new Client(reflectionEndpoint, creds, undefined,
+        !!this.config.metaData && metadataFromRecord(this.config.metaData));
     const subId = this.pubsub.subscribe('destroy', () => {
       reflectionClient.grpcClient.close();
       this.pubsub.unsubscribe(subId);
@@ -335,7 +337,11 @@ export default class GrpcHandler implements MeshHandler {
         creds,
       );
       const subId = this.pubsub.subscribe('destroy', () => {
-        client.close();
+        // @ts-ignore
+        const grpcMethod = client?.close?.path as string | undefined
+        if (!grpcMethod || !grpcMethod.toLowerCase().includes("close")) {
+          client.close();
+        }
         this.pubsub.unsubscribe(subId);
       });
       serviceClientByObjPath.set(objPath, client);
@@ -494,7 +500,7 @@ export default class GrpcHandler implements MeshHandler {
         });
       }
     }
-    const typeName = pathWithName.join('_');
+    const typeName = pathWithName.join('__');
     if ('values' in nested) {
       const enumValues: Record<string, EnumTypeComposerValueConfigDefinition> = {};
       const commentMap = (nested as any).comments;
@@ -725,6 +731,8 @@ export default class GrpcHandler implements MeshHandler {
       this.logger.debug(`Getting stored root and decoded descriptor set objects`);
       const descriptorSets = await this.getDescriptorSets(creds);
 
+      const rootJsonDirectives: Directive[] = [];
+
       for (const { name: rootJsonName, rootJson } of descriptorSets) {
         const rootLogger = this.logger.child(rootJsonName);
 
@@ -745,12 +753,17 @@ export default class GrpcHandler implements MeshHandler {
           loadOptions,
         });
 
-        this.schemaComposer.addDirective(grpcRootJsonDirective);
-        this.schemaComposer.Query.setDirectiveByName('grpcRootJson', {
-          name: rootJsonName,
-          rootJson,
+        rootJsonDirectives.push({
+          name: 'grpcRootJson',
+          args: {
+            name: rootJsonName,
+            rootJson,
+          },
         });
       }
+
+      this.schemaComposer.addDirective(grpcRootJsonDirective);
+      this.schemaComposer.Query.setDirectives(rootJsonDirectives);
 
       // graphql-compose doesn't add @defer and @stream to the schema
       specifiedDirectives.forEach(directive => this.schemaComposer.addDirective(directive));
