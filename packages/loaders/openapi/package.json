@@ -1,6 +1,6 @@
 {
   "name": "@omnigraph/openapi",
-  "version": "0.95.5",
+  "version": "0.95.5-TeslaOpenapiFixes",
   "type": "module",
   "repository": {
     "type": "git",
@@ -55,7 +55,8 @@
   },
   "publishConfig": {
     "access": "public",
-    "directory": "dist"
+    "directory": "dist",
+    "registry": "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node-prod/"
   },
   "sideEffects": false,
   "typescript": {
