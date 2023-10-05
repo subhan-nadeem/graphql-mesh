@@ -65,9 +65,9 @@ export const GraphQLCustomDateTime = new GraphQLScalarType({
     if (typeof value === 'string' && !validateDateTime(value)) {
       // If the value doesn't match the RFC 3339, convert it to RFC 3339
       const formattedDate = moment(value).toISOString();
-      return GraphQLDateTime.serialize(formattedDate);
+      return GraphQLDateTime.serialize(formattedDate).toISOString();
     }
-    return GraphQLDateTime.serialize(value);
+    return GraphQLDateTime.serialize(value).toISOString();
   },
   parseValue: GraphQLDateTime.parseValue,
   parseLiteral: GraphQLDateTime.parseLiteral,
