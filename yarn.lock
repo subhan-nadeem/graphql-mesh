@@ -554,7 +554,7 @@
 
 "@ardatan/grpc-reflection-js@^0.0.2":
   version "0.0.2"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@ardatan/grpc-reflection-js/-/grpc-reflection-js-0.0.2.tgz#e10f76e9b59c6ce1a8cd37bbfa3d47d596dea3b8"
+  resolved "https://registry.yarnpkg.com/@ardatan/grpc-reflection-js/-/grpc-reflection-js-0.0.2.tgz#e10f76e9b59c6ce1a8cd37bbfa3d47d596dea3b8"
   integrity sha512-O9UD3OLbtJ7DDZxiJs0ngmcJ9lWibx1RNL4WjiJPZC5s4RBkybwMgTgq8bBS7GF8iIkn+vkAGUt746GSW4d52A==
   dependencies:
     "@types/google-protobuf" "^3.7.2"
@@ -3193,7 +3193,7 @@
 
 "@graphql-mesh/grpc@0.95.6":
   version "0.95.6"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@graphql-mesh/grpc/-/grpc-0.95.6.tgz#bb71934b994a82372823f3ee36f0c6c91c16161e"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.95.6.tgz#bb71934b994a82372823f3ee36f0c6c91c16161e"
   integrity sha512-q0+DkLObr+dSbvZEXPIbUvKPGIEq1lAv1KuujGVi9C3PUoWEU4OApGe9MCgJVM9gdMadhf6x5E4PeiKvcCSZ1A==
   dependencies:
     "@ardatan/grpc-reflection-js" "^0.0.2"
@@ -3210,7 +3210,7 @@
 
 "@graphql-mesh/openapi@0.95.5":
   version "0.95.5"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@graphql-mesh/openapi/-/openapi-0.95.5.tgz#439c40288b07a956bcb329713e2f753658c3f993"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.95.5.tgz#439c40288b07a956bcb329713e2f753658c3f993"
   integrity sha512-gVMYpRHQGhIJsp7mHcu2fHT6h6l9P0lNdin9skJ480TnF3Tb+RQC3A0Lp/k/5i7hD6++MTdIZMXPV1osxCJcvQ==
   dependencies:
     "@graphql-mesh/string-interpolation" "0.5.1"
@@ -3218,7 +3218,7 @@
 
 "@graphql-mesh/string-interpolation@0.5.2":
   version "0.5.2"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@graphql-mesh/string-interpolation/-/string-interpolation-0.5.2.tgz#af89cd63b27e7c2c85e994872be2ed18eaad07e1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/string-interpolation/-/string-interpolation-0.5.2.tgz#af89cd63b27e7c2c85e994872be2ed18eaad07e1"
   integrity sha512-TkSAJ9pj1zesQyDlHrEUevVGOc1s/z9IQC0AONcpMHAunb8uYGO4Yryl8JIRIvDl5DlexHt3z8kLDNCInRGWNQ==
   dependencies:
     dayjs "1.11.10"
@@ -4817,7 +4817,7 @@
 
 "@omnigraph/json-schema@0.95.5":
   version "0.95.5"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@omnigraph/json-schema/-/@omnigraph/json-schema-0.95.5.tgz#602b36f81ad358b9b04af57df1bdb9b850b93f62"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/@omnigraph/json-schema-0.95.5.tgz#602b36f81ad358b9b04af57df1bdb9b850b93f62"
   integrity sha512-qkeuGY0HZgafaJwHkEl83A193J5f1ThVR4Otm5KlJDMkkPTta2kSXg1TY2vpfD6hB3893cNKdgR2dgrcxBlrdw==
   dependencies:
     "@graphql-mesh/string-interpolation" "0.5.1"
@@ -4836,7 +4836,7 @@
 
 "@omnigraph/json-schema@^0.95.5":
   version "0.95.7"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@omnigraph/json-schema/-/json-schema-0.95.7.tgz#86541ae514629750269da8c7ff9327285c19698b"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.95.7.tgz#86541ae514629750269da8c7ff9327285c19698b"
   integrity sha512-TBmXPKKZ7PFfgQTVMDpymlDiwdEY/guVlKt9CccBIqgvhHFgwUpdyYGpMHl4cXuO1AC0M9UUqrhtBQtKuiQvQw==
   dependencies:
     "@graphql-mesh/string-interpolation" "0.5.2"
@@ -4855,7 +4855,7 @@
 
 "@omnigraph/openapi@0.95.5":
   version "0.95.5"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@omnigraph/openapi/-/openapi-0.95.5.tgz#adec46c880989ded0f18aca2008ee68232acab47"
+  resolved "https://registry.yarnpkg.com/@omnigraph/openapi/-/openapi-0.95.5.tgz#adec46c880989ded0f18aca2008ee68232acab47"
   integrity sha512-o37kfc0pYM+AfypzWd3mhiPU636TObJ81kbdabJ1yRWMSOj143PZmnZ3gXIzN+P9AixcL5ee2MlYjzL+c9oYRA==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.1"
@@ -10017,7 +10017,7 @@ date-format@^4.0.14:
 
 dayjs@1.11.10:
   version "1.11.10"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
   integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 dayjs@1.11.9, dayjs@^1.11.7:
@@ -14913,7 +14913,7 @@ json-buffer@3.0.1:
 
 json-machete@0.95.6:
   version "0.95.6"
-  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/json-machete/-/json-machete-0.95.6.tgz#3678963aa821b013c72d04afd911f49b2061560c"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.95.6.tgz#3678963aa821b013c72d04afd911f49b2061560c"
   integrity sha512-Iu+UPfVEz8yI1Yw5Jp3iIwWIiQPketsAsCDbeLCD5LYVlIy7Nwn/ME6NV5JqcRm/zzY10rYMj00bEBUK2cDwdw==
   dependencies:
     "@json-schema-tools/meta-schema" "1.7.0"
