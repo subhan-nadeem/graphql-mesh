@@ -22,7 +22,6 @@ import {
 } from 'graphql-compose';
 import {
   GraphQLBigInt,
-  GraphQLDateTime,
   GraphQLEmailAddress,
   GraphQLIPv4,
   GraphQLIPv6,
@@ -31,6 +30,7 @@ import {
   GraphQLURL,
 } from 'graphql-scalars';
 import { JSONSchemaObject } from 'json-machete';
+import { GraphQLCustomDateTime } from 'packages/loaders/json-schema/src/scalars';
 import { MeshPubSub } from '@graphql-mesh/types';
 import { DefaultLogger, PubSub } from '@graphql-mesh/utils';
 import { printSchemaWithDirectives } from '@graphql-tools/utils';
@@ -639,8 +639,8 @@ type ExampleAnyOf {
       format: 'date-time',
     };
     const result = await getComposerFromJSONSchema(inputSchema, logger);
-    expect(result.input.getType()).toBe(GraphQLDateTime);
-    expect((result.output as ScalarTypeComposer).getType()).toBe(GraphQLDateTime);
+    expect(result.input.getType()).toBe(GraphQLCustomDateTime);
+    expect((result.output as ScalarTypeComposer).getType()).toBe(GraphQLCustomDateTime);
   });
   it('should return Time scalar for time format', async () => {
     const inputSchema: JSONSchema = {

@@ -32,7 +32,6 @@ import {
 import {
   GraphQLBigInt,
   GraphQLByte,
-  GraphQLDateTime,
   GraphQLEmailAddress,
   GraphQLIPv4,
   GraphQLIPv6,
@@ -70,7 +69,7 @@ import {
 import { getJSONSchemaStringFormatScalarMap } from './getJSONSchemaStringFormatScalarMap.js';
 import { getUnionTypeComposers } from './getUnionTypeComposers.js';
 import { getValidTypeName } from './getValidTypeName.js';
-import { GraphQLFile, GraphQLVoid } from './scalars.js';
+import { GraphQLCustomDateTime, GraphQLFile, GraphQLVoid } from './scalars.js';
 
 export interface TypeComposers {
   input?: AnyTypeComposer<any>;
@@ -362,7 +361,7 @@ export function getComposerFromJSONSchema(
             };
           }
           case 'date-time': {
-            const typeComposer = schemaComposer.getAnyTC(GraphQLDateTime);
+            const typeComposer = schemaComposer.getAnyTC(GraphQLCustomDateTime);
             return {
               input: typeComposer,
               output: typeComposer,
