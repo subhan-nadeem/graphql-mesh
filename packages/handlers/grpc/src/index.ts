@@ -742,7 +742,8 @@ export default class GrpcHandler implements MeshHandler {
       this.logger.debug(`Getting stored root and decoded descriptor set objects`);
       const descriptorSets = await this.getDescriptorSets(creds);
 
-      //
+      // This is a fix of a bug where the GraphQL Mesh doesn't build protos if they have multiple packages in them (e.g.
+      // package "a", package "a.b"). Fix is from this comment here: https://github.com/ardatan/graphql-mesh/issues/5438#issuecomment-1555259706
       const rootJsonDirectives: Directive[] = [];
 
       for (const { name: rootJsonName, rootJson } of descriptorSets) {
@@ -765,6 +766,8 @@ export default class GrpcHandler implements MeshHandler {
           loadOptions,
         });
 
+        // This is a fix of a bug where the GraphQL Mesh doesn't build protos if they have multiple packages in them (e.g.
+        // package "a", package "a.b"). Fix is from this comment here: https://github.com/ardatan/graphql-mesh/issues/5438#issuecomment-1555259706
         rootJsonDirectives.push({
           name: 'grpcRootJson',
           args: {
