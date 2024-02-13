@@ -337,6 +337,14 @@ export default class GrpcHandler implements MeshHandler {
         creds,
       );
       const subId = this.pubsub.subscribe('destroy', () => {
+        // There is a bug in the implementation here: The gRPC client has a method universal to all gRPC clients called
+        // "close", i.e. to close the connection of the client. However, this universal method is overridden if
+        // the gRPC service has an RPC called "close" (e.g. ServiceName.Close). This piece of code attempts to close the gRPC
+        // connection, but if the client has a "close" RPC, it will incorrectly call that close RPC instead of the universal
+        // gRPC "close connection" call. Can't think of a fix right now, so I just ignore closing the gRPC connection.
+        // This call only happens at the end of building the graphQL Mesh artifacts, and while it is good practice to close the
+        // connection, I'm not concerned about any issues related to skipping closing the connection for this particular client,
+        // because the connection should die once the process exits anyways.
         // @ts-ignore
         const grpcMethod = client?.close?.path as string | undefined
         if (!grpcMethod || !grpcMethod.toLowerCase().includes("close")) {
@@ -500,6 +508,9 @@ export default class GrpcHandler implements MeshHandler {
         });
       }
     }
+
+    // Required to fix a naming collision if proto message is named "Input",
+    // tracked in this closed issue here: https://github.com/ardatan/graphql-mesh/issues/5880
     const typeName = pathWithName.join('__');
     if ('values' in nested) {
       const enumValues: Record<string, EnumTypeComposerValueConfigDefinition> = {};
@@ -731,6 +742,7 @@ export default class GrpcHandler implements MeshHandler {
       this.logger.debug(`Getting stored root and decoded descriptor set objects`);
       const descriptorSets = await this.getDescriptorSets(creds);
 
+      //
       const rootJsonDirectives: Directive[] = [];
 
       for (const { name: rootJsonName, rootJson } of descriptorSets) {

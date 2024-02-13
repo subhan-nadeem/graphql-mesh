@@ -19,6 +19,8 @@ export function getTypeName(
   isInput: boolean,
 ) {
   if (pathWithName?.length) {
+    // Required to fix a naming collision if proto message is named "Input",
+    // tracked in this closed issue here: https://github.com/ardatan/graphql-mesh/issues/5880
     const baseTypeName = pathWithName.filter(Boolean).join('__');
     if (isScalarType(baseTypeName)) {
       return getGraphQLScalar(baseTypeName);
