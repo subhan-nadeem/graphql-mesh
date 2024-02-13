@@ -59,6 +59,10 @@ function isBlob(input: any): input is Blob {
 
 type MetadataRecord = Record<string, string | string[] | Buffer>
 
+
+// This is a fix to allow the reflection gRPC client to use metadata from the meshRC YAML for authentication
+// purposes. Otherwise, if the gRPC server requires authentication metadata, the old reflection client which
+// did not utilize metadata from the meshRC YAML file fails to authenticate and connect with the server.
 export function metadataFromRecord(metaData: MetadataRecord) {
   const meta = new Metadata();
   for (const [key, value] of Object.entries(metaData)) {

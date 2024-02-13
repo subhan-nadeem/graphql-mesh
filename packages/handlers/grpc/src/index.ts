@@ -105,6 +105,9 @@ export default class GrpcHandler implements MeshHandler {
     const reflectionEndpoint = stringInterpolator.parse(this.config.endpoint, { env: process.env });
     this.logger.debug(`Creating gRPC Reflection Client`);
     const reflectionClient = new Client(reflectionEndpoint, creds, undefined,
+        // This is a fix to allow the reflection gRPC client to use metadata from the meshRC YAML for authentication
+        // purposes. Otherwise, if the gRPC server requires authentication metadata, the old reflection client which
+        // did not utilize metadata from the meshRC YAML file fails to authenticate and connect with the server.
         !!this.config.metaData && metadataFromRecord(this.config.metaData));
     const subId = this.pubsub.subscribe('destroy', () => {
       reflectionClient.grpcClient.close();
